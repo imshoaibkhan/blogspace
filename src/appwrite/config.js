@@ -7,9 +7,7 @@ export class Service {
   storage;
 
   constructor() {
-    this.client
-      .setEndpoint(conf.appWriteUrl)
-      .setProject(conf.appWriteProjectId);
+    this.client.setEndpoint(conf.appWriteUrl).setProject(conf.appWriteProjectId)
 
     this.databases = new Databases(this.client);
     this.storage = new Storage(this.client);
@@ -17,7 +15,7 @@ export class Service {
 
   async createPost({ title, slug, content, featureImage, status, userId }) {
     try {
-      await this.databases.createDocument(
+      return await this.databases.createDocument(
         conf.appWriteDatabaseId,
         conf.appWriteCollectionId,
         slug,
@@ -34,7 +32,7 @@ export class Service {
     }
   }
 
-  async updataPost(slug, { title, content, featureImage, status }) {
+  async updatePost(slug, { title, content, featureImage, status }) {
     try {
       return (
         await this.databases.updateDocument(
@@ -58,7 +56,7 @@ export class Service {
     try {
       return await this.databases.deleteDocument(
         conf.appWriteDatabaseId,
-        conf.appWriteCollectionIdm,
+        conf.appWriteCollectionId,
         slug
       );
       return true;
@@ -83,20 +81,22 @@ export class Service {
 
   async getPosts(queries = [Query.equal("status", "active")]) {
     try {
-      return await this.databases.listDocuments(
+      const response = await this.databases.listDocuments(
         conf.appWriteDatabaseId,
         conf.appWriteCollectionId,
-        queries
+        queries,
       );
+    return response;
     } catch (error) {
       console.log("Appwrite service :: get posts :: error", error);
+      console.log("Appwrite service :: get posts :: error", error.code);
       return false;
     }
   }
 
   // file upload method
 
-  async updloadFile(file) {
+  async uploadFile(file) {
     try {
       return await this.storage.createFile(
         conf.appWriteStorageId,
