@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full my-8">
       <div
         className={`max-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
       >
