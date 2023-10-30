@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Logo = ({width = "100px"}) => {
+const Logo = () => {
   return (
-   <img className='w-full' src="./public/blogspace.png" alt="" />
+   <img className='w-full' src="../public/blogspace.png" alt="blogspace" />
   )
 }
 
