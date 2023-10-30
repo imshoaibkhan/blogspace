@@ -27,7 +27,7 @@ const Signup = () => {
         }
     }
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center justify-center md:w-full xs:mx-6'>
         <div className='mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10'>
             <div className='mb-2 flex justify-center'>
                 <span className='inline-block w-full max-w-[100px]'>
@@ -43,9 +43,9 @@ const Signup = () => {
             to="/signup"
             className="font-medium text-primary transition-all duration-200 hover:underline"
           >
-            Sign Up
+            LogIn
           </Link>
-        </p>
+        </p><br/>
         {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
 
         <form onSubmit={handleSubmit(create)}>
@@ -72,7 +72,7 @@ const Signup = () => {
             />
 
             <Input 
-            label='password: '
+            label='Password: '
             type='password'
             placeholder='Enter you password'
             {...register('password', {

@@ -6,11 +6,10 @@ import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {register, handleSubmit} = useForm()
+  const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
 
   const login = async (data) => {
@@ -28,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full my-8">
+    <div className="flex items-center justify-center my-8 md:w-full xs:mx-6">
       <div
         className={`max-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
       >

@@ -39,17 +39,24 @@ const Header = () => {
     <header className="py-3 shadow bg-gray-400">
       <Container>
         <nav className="flex justify-between items-center">
-          <div className="w-2/12">
+          <div className="md:w-2/12 xs:w-3/12">
             <Link to="/">
               <Logo />
             </Link>
           </div>
           <ul className="flex ml-auto">
-            {navItems.map((item) => (
-              item.active ? (<li key={item.name}>
-                <button onClick={() => navigate(item.slug)} className="inline-bock px-6 py-2 duration-200 hover:bg-white rounded-full">{item.name}</button>
-              </li>) : (null)
-            ))}
+            {navItems.map((item) =>
+              item.active ? (
+                <li key={item.name}>
+                  <button
+                    onClick={() => navigate(item.slug)}
+                    className="inline-bock py-2 duration-200 hover:bg-white rounded-full md:px-6 md:text-base xs:px-2 xs:text-sm"
+                  >
+                    {item.name}
+                  </button>
+                </li>
+              ) : null
+            )}
             {authStatus && (
               <li>
                 <LogoutBtn />
